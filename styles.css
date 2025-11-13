@@ -1,0 +1,111 @@
+/* Mobile-first, no-JS responsive site styles */
+:root{
+  --bg: #0b0c10;
+  --panel: #11131a;
+  --text: #e6e8ef;
+  --muted: #9aa3b2;
+  --brand: #6aa7ff;
+  --brand-2: #8a7bff;
+  --accent: #3de0b2;
+  --border: #1c2030;
+  --ring: 0 0 0 3px color-mix(in oklab, var(--brand) 40%, transparent);
+}
+
+@media (prefers-color-scheme: light){
+  :root{
+    --bg: #f7f8fb;
+    --panel: #ffffff;
+    --text: #0b1020;
+    --muted: #5b6475;
+    --brand: #2a66ff;
+    --brand-2: #6b5cff;
+    --accent: #12b886;
+    --border: #e6e9f2;
+  }
+}
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "IBM Plex Sans", "Manrope", sans-serif;
+  color:var(--text);
+  background: radial-gradient(1200px 800px at 80% -10%, color-mix(in oklab, var(--brand) 18%, transparent), transparent),
+              radial-gradient(1200px 800px at -10% 0%, color-mix(in oklab, var(--brand-2) 18%, transparent), transparent),
+              var(--bg);
+  line-height:1.6;
+}
+
+.container{ width:100%; max-width: 1120px; margin-inline:auto; padding-inline: 20px; }
+
+.header{
+  position: sticky; top:0; z-index:40;
+  backdrop-filter: saturate(1.2) blur(10px);
+  background: color-mix(in oklab, var(--panel) 70%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+.nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:12px; }
+.brand{ display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing: -0.01em; }
+.logo{ width:32px; height:32px; display:grid; place-items:center; border-radius:10px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: 0 10px 25px -10px color-mix(in oklab, var(--brand) 40%, transparent); }
+.logo svg{ width:18px; height:18px; color:white; }
+
+.cta-group{ display:flex; gap:10px; }
+.btn{ appearance:none; border:1px solid var(--border); background:var(--panel); color:var(--text); padding:10px 14px; border-radius:10px; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:10px; transition: transform .15s ease, background .2s ease, border-color .2s ease; }
+.btn:hover{ transform: translateY(-1px); border-color: color-mix(in oklab, var(--brand) 40%, var(--border)); }
+.btn.primary{ background: linear-gradient(180deg, color-mix(in oklab, var(--brand) 20%, var(--panel)), color-mix(in oklab, var(--brand-2) 14%, var(--panel))); border-color: color-mix(in oklab, var(--brand) 40%, var(--border)); box-shadow: 0 10px 30px -12px color-mix(in oklab, var(--brand) 40%, transparent); }
+
+.hero{ padding:64px 0 28px; }
+.hero .wrap{ display:grid; gap:28px; }
+.title{ font-size: clamp(28px, 6vw, 56px); line-height:1.05; letter-spacing:-0.02em; margin:0; }
+.subtitle{ font-size: clamp(16px, 3.6vw, 20px); color:var(--muted); margin: 8px 0 0; }
+.actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:18px; }
+.hero-card{ margin-top: 16px; border:1px solid var(--border); background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 86%, transparent), color-mix(in oklab, var(--panel) 96%, transparent)); padding:16px; border-radius:16px; display:grid; gap:14px; }
+.hero-stats{ display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:8px; }
+.stat{ padding:12px; border-radius:12px; border:1px dashed var(--border); background: color-mix(in oklab, var(--panel) 80%, transparent); text-align:center; }
+.stat .v{ display:block; font-weight:800; font-size: clamp(18px, 4.6vw, 28px); }
+.stat .k{ color:var(--muted); font-size:12px; }
+
+.section{ padding:30px 0; }
+.grid{ display:grid; gap:14px; }
+.card{ border:1px solid var(--border); background:var(--panel); border-radius:14px; padding:16px; }
+.card h3{ margin:0 0 6px; font-size:18px; }
+.card p{ margin:0; color:var(--muted); font-size:14px; }
+
+.features{ grid-template-columns: 1fr; }
+@media (min-width: 700px){ .features{ grid-template-columns: repeat(3, 1fr); } }
+
+.highlight{ display:flex; align-items:center; gap:10px; padding:8px 12px; border:1px solid var(--border); border-radius:999px; width:max-content; color: var(--muted); background: color-mix(in oklab, var(--panel) 85%, transparent); font-size:12px; }
+.dot{ width:8px; height:8px; border-radius:999px; background: var(--accent); box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent) 20%, transparent); }
+
+.showcase{ display:grid; gap:14px; }
+@media (min-width:900px){ .showcase{ grid-template-columns: 1.25fr 1fr; align-items:stretch; } }
+.mock{ border:1px solid var(--border); border-radius:16px; overflow:hidden; background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 90%, transparent), color-mix(in oklab, var(--panel) 98%, transparent)); min-height: 240px; display:grid; }
+.mock .bar{ display:flex; gap:6px; padding:10px; border-bottom:1px solid var(--border); background: color-mix(in oklab, var(--panel) 80%, transparent); }
+.mock .dot{ width:10px; height:10px; box-shadow:none; opacity:.8; }
+.mock .content{ padding:14px; display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; }
+.mock .tile{ border:1px solid var(--border); background: color-mix(in oklab, var(--panel) 88%, transparent); border-radius:12px; min-height:80px; }
+
+.testimonials{ grid-template-columns: 1fr; }
+@media (min-width: 900px){ .testimonials{ grid-template-columns: repeat(3, 1fr); } }
+.quote{ display:grid; gap:10px; }
+.quote .who{ display:flex; align-items:center; gap:10px; }
+.avatar{ width:36px; height:36px; border-radius:50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); }
+.who .meta{ display:grid; line-height:1.2; }
+.who .meta small{ color:var(--muted); }
+
+.pricing{ grid-template-columns: 1fr; }
+@media (min-width: 900px){ .pricing{ grid-template-columns: repeat(3, 1fr); } }
+.price{ display:grid; gap:12px; text-align:left; }
+.price .tag{ font-weight:800; font-size: 28px; }
+.price ul{ margin:0; padding-left: 18px; color:var(--muted); }
+
+.cta-panel{ display:grid; gap:12px; text-align:center; border:1px solid var(--border); background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 85%, transparent), color-mix(in oklab, var(--panel) 95%, transparent)); padding:18px; border-radius:16px; }
+
+.footer{ margin-top:40px; padding:20px 0 40px; color:var(--muted); border-top:1px solid var(--border); }
+.footer a{ color:inherit; }
+
+/* Accessibility */
+a:focus-visible, button:focus-visible{ outline: none; box-shadow: var(--ring); }
+
+/* Small utility */
+.badge{ font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:10px; padding:6px 10px; border-radius:999px; border:1px solid var(--border); color: var(--brand); background: color-mix(in oklab, var(--brand) 12%, transparent); }
